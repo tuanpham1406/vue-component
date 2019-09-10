@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div id="components-demo">
+<center>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <hr>
+    <blog-post title="Giới thiệu về Vue"></blog-post>
+    <blog-post title="Các khái niệm trong Vue"></blog-post>
+    <blog-post title="Vue căn bản và vô cùng nâng cao"></blog-post>
+</center>
+</div>
+<hr>
+<div id="blog-post-demo">
+    <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title">
+    <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <div v-html="post.content"></div>
+    </div>
+    </blog-post>
+</div>
+<hr>
+<div id="blog-posts-events-demo">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post1
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-on:enlarge-text="postFontSize += 0.1"
+        ></blog-post1>
+    </div>
+</div>
+<script src="javascript.js"></script>
+</body>
+</html>
